@@ -1,0 +1,35 @@
+[33mcommit 8a4fb415502a5525b7759944beec2178f82012f2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Noémi Telek <noamy.telek@gmail.com>
+Date:   Thu Sep 22 16:46:09 2022 +0200
+
+    firebaseConfig modified
+
+[33mcommit 86c8473fa400c1d2dfd52eee3e1d28b2eb43a157[m
+Author: Noémi Telek <noamy.telek@gmail.com>
+Date:   Thu Sep 22 16:33:06 2022 +0200
+
+    firebaseConfig modified
+
+[33mcommit b92b4707d2ab0927c0deede28f6014d2048eb997[m
+Author: Noémi Telek <noamy.telek@gmail.com>
+Date:   Thu Sep 22 16:20:56 2022 +0200
+
+    env variables added to netlify
+
+[33mcommit 77cee003170236ba344554e84284b0bfc89af5fb[m[33m ([m[1;32mreducers[m[33m)[m
+Author: Noémi Telek <noamy.telek@gmail.com>
+Date:   Thu Sep 22 10:07:05 2022 +0200
+
+    redirect added for netlify
+
+[33mcommit 6a2e6d5061a7b0b8ab4d014449e01d08147510bb[m[33m ([m[1;32mapp-basics[m[33m)[m
+Author: Noémi Telek <noamy.telek@gmail.com>
+Date:   Thu Sep 22 09:45:24 2022 +0200
+
+    app basics
+
+[33mcommit 62af8f4fc84bf88b28e040b58e65b0ad887dd070[m
+Author: Noémi Telek <noamy.telek@gmail.com>
+Date:   Thu Sep 22 09:28:06 2022 +0200
+
+    initial commit
