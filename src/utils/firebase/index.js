@@ -47,10 +47,12 @@ export const addCollectionAndDocs = async (collectionKey, objectsToAdd) => {
   });
 };
 
-export const getCategoriesDocs = async () => {
-  const collectionRef = collection(db, 'categories');
-  const querySnapshot = await getDocs(query(collectionRef));
+export const getCategoriesDocs = async (collectionName) => {
+  const collectionRef = collection(db, collectionName);
 
+  await Promise.reject(new Error('woops'));
+
+  const querySnapshot = await getDocs(query(collectionRef));
   return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
 

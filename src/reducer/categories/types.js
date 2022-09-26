@@ -1,5 +1,7 @@
 const CATEGORIES_ACTION_TYPES = {
-  SET_CATEGORIES: 'SET_CATEGORIES',
+  REQUEST: 'categories/REQUEST',
+  SUCCESS: 'categories/SUCCESS',
+  FAILURE: 'categories/FAILURE',
 };
 
 export default CATEGORIES_ACTION_TYPES;
