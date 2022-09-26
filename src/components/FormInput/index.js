@@ -3,7 +3,7 @@ import './index.scss';
 export default function FormInput({ label, inputOptions }) {
   return (
     <div className="group">
-      <input className="form-input" {...inputOptions} />
+      <input className="form-input" autoComplete="off" {...inputOptions} />
       {label && (
         <label
           className={`${

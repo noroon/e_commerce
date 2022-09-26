@@ -51,13 +51,7 @@ export const getCategoriesDocs = async () => {
   const collectionRef = collection(db, 'categories');
   const querySnapshot = await getDocs(query(collectionRef));
 
-  const categorMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
-
-  return categorMap;
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
 
 export const createUserDocFromAuth = async (userAuth, additionalInfos = {}) => {
