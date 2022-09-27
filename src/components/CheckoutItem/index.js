@@ -4,8 +4,8 @@ import {
   addItemToCart,
   deleteItemFromCart,
   removeItemFromCart,
-} from '../../reducer/cart/action';
-import { cartItemsSelector } from './../../reducer/cart/selector';
+} from '../../reducers/cart/actions';
+import { cartItemsSelector } from './../../reducers/cart/selector';
 
 import './index.scss';
 

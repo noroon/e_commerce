@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addItemToCart } from '../../reducer/cart/action';
-import { cartItemsSelector } from './../../reducer/cart/selector';
+import { addItemToCart } from '../../reducers/cart/actions';
+import { cartItemsSelector } from '../../reducers/cart/selector';
 
 import Button from '../Button';
 import './index.scss';

@@ -30,6 +30,7 @@ googleProvider.setCustomParameters({
 });
 
 export const auth = getAuth();
+
 export const signInWithGooglePopup = () => {
   signInWithPopup(auth, googleProvider);
 };
@@ -49,18 +50,16 @@ export const addCollectionAndDocs = async (collectionKey, objectsToAdd) => {
 
 export const getCategoriesDocs = async (collectionName) => {
   const collectionRef = collection(db, collectionName);
-
-  await Promise.reject(new Error('woops'));
-
   const querySnapshot = await getDocs(query(collectionRef));
+
   return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
 
 export const createUserDocFromAuth = async (userAuth, additionalInfos = {}) => {
   const userDocRef = doc(db, 'users', userAuth.uid);
-  const userSnapshop = await getDoc(userDocRef);
+  const userSnapshot = await getDoc(userDocRef);
 
-  if (!userSnapshop.exists()) {
+  if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createAt = new Date();
 
@@ -74,9 +73,8 @@ export const createUserDocFromAuth = async (userAuth, additionalInfos = {}) => {
     } catch (error) {
       console.log('error creating the user', error.message);
     }
-
-    return userDocRef;
   }
+  return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -93,4 +91,17 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) => {
   onAuthStateChanged(auth, callback);
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject,
+    );
+  });
 };

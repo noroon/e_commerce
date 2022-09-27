@@ -6,7 +6,7 @@ import Spinner from './../../components/Spinner';
 import {
   selectCategories,
   selectCategoriesIsLoading,
-} from '../../reducer/categories/selector';
+} from '../../reducers/categories/selector';
 
 export default function CategoriesPreview() {
   const categories = useSelector(selectCategories);

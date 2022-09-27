@@ -7,8 +7,8 @@ import CartItem from '../CartItem';
 import {
   cartItemsSelector,
   isCartOpenSelector,
-} from '../../reducer/cart/selector';
-import { setIsCartOpen } from '../../reducer/cart/action';
+} from '../../reducers/cart/selector';
+import { setIsCartOpen } from '../../reducers/cart/actions';
 
 import './index.scss';
 

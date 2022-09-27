@@ -8,7 +8,7 @@ import Spinner from '../../components/Spinner';
 import {
   selectCategories,
   selectCategoriesIsLoading,
-} from '../../reducer/categories/selector';
+} from '../../reducers/categories/selector';
 import './index.scss';
 
 export default function Category() {

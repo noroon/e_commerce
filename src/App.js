@@ -4,24 +4,13 @@ import { useDispatch } from 'react-redux';
 
 import Navigation from './components/Navigation';
 import { routes } from './routes/routes.config.js';
-import {setCurrentUser}  from './reducer/user/action';
-import {
-  createUserDocFromAuth,
-  onAuthStateChangedListener,
-} from './utils/firebase/index.js';
+import { checkUserSession } from './reducers/user/actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-      if (user) {
-        createUserDocFromAuth(user);
-      }
-      dispatch(setCurrentUser(user));
-    });
-
-    return unsubscribe;
+    dispatch(checkUserSession());
   }, [dispatch]);
 
   return (

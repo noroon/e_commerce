@@ -4,7 +4,7 @@ import CheckoutItem from './../../components/CheckoutItem';
 import {
   cartItemsSelector,
   cartTotalSelector,
-} from '../../reducer/cart/selector';
+} from '../../reducers/cart/selector';
 
 import './index.scss';
 
