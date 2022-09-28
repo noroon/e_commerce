@@ -1,3 +1,4 @@
+import Spinner from './../Spinner';
 import './index.scss';
 
 const BUTTON_TYPE_CLASSES = {
@@ -5,13 +6,19 @@ const BUTTON_TYPE_CLASSES = {
   inverted: 'inverted',
 };
 
-export default function Button({ children, buttonType, ...otherProps }) {
+export default function Button({
+  children,
+  buttonType,
+  isLoading,
+  ...otherProps
+}) {
   return (
     <button
+      disabled={isLoading}
       className={`button ${BUTTON_TYPE_CLASSES[buttonType]}`}
       {...otherProps}
     >
-      {children}
+      {isLoading ? <Spinner /> : children}
     </button>
   );
 }

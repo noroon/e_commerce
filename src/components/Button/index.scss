@@ -14,7 +14,7 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
-  // text-align: center;
+  align-items: center;
 
   &:hover {
     background-color: white;
@@ -42,5 +42,10 @@
       color: white;
       border: none;
     }
+  }
+
+  .spinner-container {
+    width: 30px;
+    height: 30px;
   }
 }
