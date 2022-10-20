@@ -5,7 +5,7 @@ import FormInput from './../FormInput/index';
 import Button from './../Button/index';
 
 import { handleChange } from '../../utils/functions';
-import { requestSignUp } from '../../reducers/user/actions';
+import { signUpRequest } from '../../reducers/user/actions';
 
 import './index.scss';
 
@@ -57,7 +57,7 @@ export default function SignUpForm() {
     }
 
     try {
-      dispatch(requestSignUp(email, password, displayName));
+      dispatch(signUpRequest(email, password, displayName));
       setFormData(defaultFormFields);
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {

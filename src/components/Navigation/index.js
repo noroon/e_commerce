@@ -7,7 +7,7 @@ import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
 import { currentUserSelector } from '../../reducers/user/selector';
 import { isCartOpenSelector } from '../../reducers/cart/selector';
-import { requestSignOut } from '../../reducers/user/actions';
+import { signOutRequest } from '../../reducers/user/actions';
 
 import './index.scss';
 
@@ -16,7 +16,7 @@ export default function Navigation() {
   const currentUser = useSelector(currentUserSelector);
   const isCartOpen = useSelector(isCartOpenSelector);
 
-  const signOutUser = () => dispatch(requestSignOut());
+  const signOutUser = () => dispatch(signOutRequest());
   return (
     <>
       <div className="navigation">

@@ -6,8 +6,8 @@ import Button from '../Button/index';
 
 import { handleChange } from '../../utils/functions';
 import {
-  requestEmailSignIn,
-  requestGoogleSignIn,
+  emailSignInRequest,
+  googleSignInRequest,
 } from '../../reducers/user/actions';
 
 import './index.scss';
@@ -38,14 +38,14 @@ export default function SignInForm() {
   const { email, password } = formData;
 
   const signInWithGoogle = async () => {
-    dispatch(requestGoogleSignIn());
+    dispatch(googleSignInRequest());
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      dispatch(requestEmailSignIn(email, password));
+      dispatch(emailSignInRequest(email, password));
       setFormData(defaultFormFields);
     } catch (error) {
       switch (error.code) {
