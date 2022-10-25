@@ -1,12 +1,11 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import FormInput from './../FormInput/index';
-import Button from './../Button/index';
+import Button from '../Button';
+import Form from '../Form';
 
-import { handleChange } from '../../utils/functions';
 import { signUpRequest } from '../../reducers/user/actions';
-
+import { AuthError, AuthErrorCodes } from 'firebase/auth';
 import './index.scss';
 
 const defaultFormFields = {
@@ -48,7 +47,7 @@ export default function SignUpForm() {
   const { displayName, email, password, confirmPassword } = formData;
   const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -60,13 +59,15 @@ export default function SignUpForm() {
       dispatch(signUpRequest(email, password, displayName));
       setFormData(defaultFormFields);
     } catch (error) {
-      if (error.code === 'auth/email-already-in-use') {
+      if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
         alert('Email is already exists');
       }
-      if (error.code === 'auth/weak-password') {
-        alert(error.message.match(/(?![Firebase: ]).*(?= \()/gi));
+      if ((error as AuthError).code === AuthErrorCodes.WEAK_PASSWORD) {
+        alert(
+          (error as AuthError).message.match(/(?![Firebase: ]).*(?= \()/gi),
+        );
       }
-      if (error.code === 'auth/invalid-email') {
+      if ((error as AuthError).code === AuthErrorCodes.INVALID_EMAIL) {
         alert('Use a valid email');
       }
       console.log('user creation encountered an error', error);
@@ -77,22 +78,14 @@ export default function SignUpForm() {
     <div className="sign-up-container">
       <h2>Don't have an account?</h2>
       <span>Sign up with your email</span>
-      <form onSubmit={handleSubmit}>
-        {formFields.map(({ name, type, label, id }) => (
-          <FormInput
-            key={id}
-            label={label}
-            inputOptions={{
-              required: true,
-              name,
-              type,
-              value: formData[name],
-              onChange: (e) => handleChange(e, formData, setFormData),
-            }}
-          />
-        ))}
+      <Form
+        handleSubmit={handleSubmit}
+        formFields={formFields}
+        formData={formData}
+        setFormData={setFormData}
+      >
         <Button type="submit">Sign up</Button>
-      </form>
+      </Form>
     </div>
   );
 }

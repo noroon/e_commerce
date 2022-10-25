@@ -1,0 +1,32 @@
+import { ChangeEvent, ChangeEventHandler } from 'react';
+
+// export const handleChange: ChangeEventHandler<HTMLInputElement> = (
+export const handleChange = (
+  { target }: ChangeEvent<HTMLInputElement>,
+  formData: Record<string, string>,
+  setFormData: React.Dispatch<React.SetStateAction<any>>,
+) => {
+  const { name, value, type, checked } = target;
+  const isCheckbox = type === 'checkbox';
+
+  setFormData({
+    ...formData,
+    [name]: isCheckbox ? checked : value,
+  });  
+};
+
+// export const handleChange = (
+//   { target },
+//   formData,
+//   setFormData,
+// ) => {
+//   const { name, value, type, checked } = target;
+//   const isCheckbox = type === 'checkbox';
+
+//   setFormData({
+//     ...formData,
+//     [name]: isCheckbox ? checked : value,
+//   });
+//   console.log(formData);
+  
+// };
