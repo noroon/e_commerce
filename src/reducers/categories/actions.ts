@@ -1,10 +1,11 @@
-import CATEGORIES_ACTION_TYPES, { Category } from './types';
+import CATEGORIES_ACTION_TYPES from './types';
 import {
   createAction,
   Action,
   ActionWithPayload,
   withMatcher,
 } from '../reducer.utils';
+import { Category } from '../../@types';
 
 export type RequestGetCategories = Action<CATEGORIES_ACTION_TYPES.REQUEST>;
 
@@ -22,12 +23,14 @@ export const requestGetCategories = withMatcher((): RequestGetCategories => {
   return createAction(CATEGORIES_ACTION_TYPES.REQUEST);
 });
 
-export const succeedGetCategories = withMatcher((
-  categories: Category[],
-): SucceedGetCategories => {
-  return createAction(CATEGORIES_ACTION_TYPES.SUCCESS, categories);
-});
+export const succeedGetCategories = withMatcher(
+  (categories: Category[]): SucceedGetCategories => {
+    return createAction(CATEGORIES_ACTION_TYPES.SUCCESS, categories);
+  },
+);
 
-export const failGetCategories = withMatcher((error: Error): FailGetCategories => {
-  return createAction(CATEGORIES_ACTION_TYPES.FAILURE, error);
-});
+export const failGetCategories = withMatcher(
+  (error: Error): FailGetCategories => {
+    return createAction(CATEGORIES_ACTION_TYPES.FAILURE, error);
+  },
+);

@@ -42,7 +42,7 @@ const formFields = [
   },
 ];
 
-export default function SignUpForm() {
+const SignUpForm = () => {
   const [formData, setFormData] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formData;
   const dispatch = useDispatch();
@@ -88,4 +88,6 @@ export default function SignUpForm() {
       </Form>
     </div>
   );
-}
+};
+
+export default SignUpForm;

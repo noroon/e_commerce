@@ -22,7 +22,7 @@ import {
   QueryDocumentSnapshot,
 } from 'firebase/firestore';
 import firebaseConfig from './firebase.config';
-import { Category } from '../../reducers/categories/types';
+import { Category } from '../../@types';
 
 initializeApp(firebaseConfig);
 export const db = getFirestore();

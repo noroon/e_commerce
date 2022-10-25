@@ -10,7 +10,7 @@ import { setIsCartOpen } from '../../reducers/cart/actions';
 
 import './index.scss';
 
-export default function CartIcon() {
+const CartIcon = () => {
   const dispatch = useDispatch();
 
   const cartCount = useSelector(cartCountSelector);
@@ -24,4 +24,6 @@ export default function CartIcon() {
       <span className="item-count">{cartCount}</span>
     </div>
   );
-}
+};
+
+export default CartIcon;

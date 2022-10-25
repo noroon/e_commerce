@@ -11,11 +11,17 @@ import {
 } from '../../reducers/categories/selector';
 import './index.scss';
 
+type CategoryRouteParams = {
+  category: string;
+};
+
 export default function Category() {
-  const { category } = useParams();
+  const { category } = useParams<
+    keyof CategoryRouteParams
+  >() as CategoryRouteParams;
   const categories = useSelector(selectCategories);
   const isLoading = useSelector(selectCategoriesIsLoading);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(categories[category]);
 
   useEffect(() => {
     setProducts(categories[category]);

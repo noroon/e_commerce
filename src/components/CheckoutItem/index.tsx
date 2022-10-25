@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -5,14 +6,15 @@ import {
   deleteItemFromCart,
   removeItemFromCart,
 } from '../../reducers/cart/actions';
-import { cartItemsSelector } from './../../reducers/cart/selector';
+import { cartItemsSelector } from '../../reducers/cart/selector';
+import { CartItemProps } from '../../@types';
 
 import './index.scss';
 
-export default function CheckoutItem({ cartItem }) {
+const CheckoutItem: FC<CartItemProps> = ({ cartItem }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(cartItemsSelector);
-  
+
   const { name, imageUrl, price, quantity } = cartItem;
 
   return (
@@ -45,4 +47,6 @@ export default function CheckoutItem({ cartItem }) {
       </div>
     </div>
   );
-}
+};
+
+export default CheckoutItem;

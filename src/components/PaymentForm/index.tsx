@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { StripeCardElement } from '@stripe/stripe-js';
 
 import Button from '../Button';
 
@@ -9,14 +10,18 @@ import { currentUserSelector } from '../../reducers/user/selector';
 
 import './index.scss';
 
-export default function PaymentForm() {
+const ifValidCardElement = (
+  card: StripeCardElement | null,
+): card is StripeCardElement => card !== null;
+
+const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const amount = useSelector(cartTotalSelector);
   const currentUser = useSelector(currentUserSelector);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -27,9 +32,7 @@ export default function PaymentForm() {
 
     const res = await fetch('/.netlify/functions/createPaymentIntent', {
       method: 'post',
-      heather: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ amount: amount * 100 }),
     }).then((res) => res.json());
 
@@ -37,9 +40,13 @@ export default function PaymentForm() {
       paymentIntent: { client_secret: clientSecret },
     } = res;
 
+    const cardDetails = elements.getElement(CardElement);
+
+    if (!ifValidCardElement(cardDetails)) return;
+
     const paymentResult = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: cardDetails,
         billing_details: {
           name: currentUser ? currentUser.displayName : 'Guest',
         },
@@ -66,4 +73,6 @@ export default function PaymentForm() {
       </form>
     </div>
   );
-}
+};
+
+export default PaymentForm;

@@ -1,12 +1,19 @@
+import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import Button from '../Button';
 
 import { addItemToCart } from '../../reducers/cart/actions';
 import { cartItemsSelector } from '../../reducers/cart/selector';
+import { Product } from '../../@types';
 
-import Button from '../Button';
 import './index.scss';
 
-export default function ProductCard({ product }) {
+type ProductCardProps = {
+  product: Product;
+};
+
+const ProductCard : FC<ProductCardProps>= ({ product }) => {
   const { name, price, imageUrl } = product;
 
   const dispatch = useDispatch();
@@ -26,4 +33,6 @@ export default function ProductCard({ product }) {
       </Button>
     </div>
   );
-}
+};
+
+export default ProductCard;

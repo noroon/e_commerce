@@ -32,7 +32,7 @@ const formFields = [
   },
 ];
 
-export default function SignInForm() {
+const SignInForm = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(defaultFormFields);
   const { email, password } = formData;
@@ -82,4 +82,6 @@ export default function SignInForm() {
       </Form>
     </div>
   );
-}
+};
+
+export default SignInForm;

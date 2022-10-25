@@ -34,7 +34,7 @@ const categories = [
   },
 ];
 
-export default function CategoryList() {
+const CategoryList = () => {
   return (
     <div className="category-list-container">
       {categories.map((category) => (
@@ -42,4 +42,6 @@ export default function CategoryList() {
       ))}
     </div>
   );
-}
+};
+
+export default CategoryList;

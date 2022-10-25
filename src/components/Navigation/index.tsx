@@ -1,7 +1,7 @@
 import { Outlet, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import CartIcon from './../CartIcon';
+import CartIcon from '../CartIcon';
 import CartDropdown from '../CartDropdown';
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
@@ -11,7 +11,7 @@ import { signOutRequest } from '../../reducers/user/actions';
 
 import './index.scss';
 
-export default function Navigation() {
+const Navigation = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(currentUserSelector);
   const isCartOpen = useSelector(isCartOpenSelector);
@@ -43,4 +43,6 @@ export default function Navigation() {
       <Outlet />
     </>
   );
-}
+};
+
+export default Navigation;

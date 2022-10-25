@@ -1,7 +1,17 @@
-import './index.scss';
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function CategoryItem({ category: { imageUrl, title, path } }) {
+import { Item } from '../../@types';
+
+import './index.scss';
+
+type CategoryItemProps = {
+  category: Item;
+};
+
+const CategoryItem: FC<CategoryItemProps> = ({
+  category: { imageUrl, title, path },
+}) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -20,4 +30,6 @@ export default function CategoryItem({ category: { imageUrl, title, path } }) {
       </div>
     </div>
   );
-}
+};
+
+export default CategoryItem;

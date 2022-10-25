@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Button from './../Button';
+import Button from '../Button';
 import CartItem from '../CartItem';
 
 import {
@@ -12,7 +12,7 @@ import { setIsCartOpen } from '../../reducers/cart/actions';
 
 import './index.scss';
 
-export default function CartDropdown() {
+const CartDropdown = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,4 +36,6 @@ export default function CartDropdown() {
       <Button onClick={checkoutHandler}>GO TO CHECKOUT</Button>
     </div>
   );
-}
+};
+
+export default CartDropdown;
