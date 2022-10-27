@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import CheckoutItem from './../../components/CheckoutItem';
+import CheckoutItem from '../../components/CheckoutItem';
 import PaymentForm from '../../components/PaymentForm';
 
 import {
@@ -12,7 +12,7 @@ import './index.scss';
 
 const headerTitles = ['Product', 'Description', 'Quantity', 'Price', 'Remove'];
 
-export default function Checkout() {
+const Checkout = () => {
   const cartItems = useSelector(cartItemsSelector);
   const cartTotal = useSelector(cartTotalSelector);
 
@@ -32,4 +32,6 @@ export default function Checkout() {
       <PaymentForm />
     </div>
   );
-}
+};
+
+export default Checkout;

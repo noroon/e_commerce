@@ -3,15 +3,15 @@ import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import CategoriesPreview from '../CategoriesPreview';
-import Category from './../Category';
+import Category from '../Category';
 
 import { requestGetCategories } from '../../reducers/categories/actions';
 
-export default function Shop() {
+const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(requestGetCategories());    
+    dispatch(requestGetCategories());
   }, [dispatch]);
 
   return (
@@ -20,4 +20,6 @@ export default function Shop() {
       <Route path=":category" element={<Category />} />
     </Routes>
   );
-}
+};
+
+export default Shop;

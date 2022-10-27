@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import Navigation from './components/Navigation';
-import { routes } from './routes/routes.config.js';
+import { routes } from './routes/routes.config';
 import { checkUserSession } from './reducers/user/actions';
 
-export default function App() {
+const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,4 +26,6 @@ export default function App() {
       </Route>
     </Routes>
   );
-}
+};
+
+export default App;

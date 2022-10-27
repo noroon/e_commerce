@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 
-import CategoryPreview from './../../components/CategoryPreview';
-import Spinner from './../../components/Spinner';
+import CategoryPreview from '../../components/CategoryPreview';
+import Spinner from '../../components/Spinner';
 
 import {
   selectCategories,
   selectCategoriesIsLoading,
 } from '../../reducers/categories/selector';
 
-export default function CategoriesPreview() {
+const CategoriesPreview = () => {
   const categories = useSelector(selectCategories);
   const isLoading = useSelector(selectCategoriesIsLoading);
 
@@ -27,4 +27,6 @@ export default function CategoriesPreview() {
       )}
     </>
   );
-}
+};
+
+export default CategoriesPreview;

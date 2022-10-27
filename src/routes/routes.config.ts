@@ -1,4 +1,4 @@
-import { Home, Shop, Authentication, Checkout } from './';
+import { Home, Shop, Authentication, Checkout } from '.';
 
 export const routes = [
   {
